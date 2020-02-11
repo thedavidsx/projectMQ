@@ -10,3 +10,7 @@ Implementacion SignalR y React Js
 Especificaciones Tecnicas
 
 Net Core 2.1, React 16 +  , Type Script , RabitMQ , MassTransit 
+
+Script Sql Server de tabla de mantenedores
+
+Midlerware Backend Nivernate C#
