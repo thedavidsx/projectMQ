@@ -1,0 +1,63 @@
+CREATE TABLE [dbo].[NOT_APLICACION](
+	[ID_NOT_APLICACION] [uniqueidentifier] NOT NULL,
+	[CODIGO] [varchar](100) NULL,
+	[DESCRIPCION] [varchar](250) NULL,
+	[OBLIGATORIO] [int] NULL
+) ON [PRIMARY];
+
+
+
+CREATE TABLE [dbo].[NOT_CANAL](
+	[CODIGO_NOT_CANAL] [varchar](20) NOT NULL,
+	[URL] [varchar](250) NULL,
+	[MAX_REINTENTOS] [int] NULL,
+	[TIEMPO_REINTENTOS] [decimal](18, 0) NULL,
+	[CANAL_OBLIGATORIO] [int] NULL,
+	[FORMATO] [varchar](20) NULL
+) ON [PRIMARY];
+
+CREATE TABLE [dbo].[NOT_CATEGORIA](
+	[ID_NOT_CATEGORIA] [uniqueidentifier] NOT NULL,
+	[CODIGO_NOT_APLICACION] [varchar](20) NULL,
+	[CODIGO] [varchar](20) NULL,
+	[DESCRIPCION] [varchar](20) NULL
+) ON [PRIMARY];
+
+CREATE TABLE [dbo].[NOT_MENSAJE](
+	[ID_NOT_MENSAJE] [uniqueidentifier] NOT NULL,
+	[MENSAJE] [text] NULL,
+	[FORMATO] [varchar](20) NOT NULL,
+	[ID_NOT_MENSAJE_USUARIO] [uniqueidentifier] NULL,
+	[PRIORIDAD] [int] NOT NULL,
+	[NIVEL] [varchar](20) NULL,
+	[FECHA_ENVIO] [date] NULL,
+	[DESTINATARIOS] [varchar](2050) NULL,
+	[ICONO] [varchar](50) NULL,
+	[CANAL_DESTINATARIO] [varchar](250) NULL,
+	[ID_CATEGORIA] [uniqueidentifier] NULL,
+	[ID_APLICACION] [uniqueidentifier] NULL,
+	[ASUNTO] [varchar](200) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+
+
+CREATE TABLE [dbo].[NOT_MENSAJE_USUARIO](
+	[ID_NOT_MENSAJE_USUARIO] [uniqueidentifier] NOT NULL,
+	[ID_NOT_MENSAJE] [uniqueidentifier] NULL,
+	[ID_USUARIO] [varchar](20) NULL,
+	[IDIOMA] [varchar](20) NULL,
+	[ESTADO] [decimal](22, 2) NULL,
+	[FECHA_ENTREGA] [date] NULL
+) ON [PRIMARY];
+
+CREATE TABLE [dbo].[NOT_OPCIONES_USUARIO](
+	[ID_NOT_OPCIONES_USUARIO] [uniqueidentifier] NOT NULL,
+	[ID_USUARIO] [varchar](20) NULL,
+	[CONFIGURACION] [text] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
+
+CREATE TABLE [dbo].[NOT_PLANTILLA](
+	[ID_NOT_PLANTILLA] [uniqueidentifier] NOT NULL,
+	[ID_NOT_CANAL] [varchar](20) NULL,
+	[FORMATO] [varchar](20) NULL,
+	[CONTENIDO] [text] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY];
